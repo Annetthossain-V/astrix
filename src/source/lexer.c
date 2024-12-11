@@ -6,6 +6,7 @@
 #include <stdlib.h>
 
 #include "../header/data.h"
+#include "../header/sys.h"
 
 unsigned short StringHyperV(char* buffer) {
     char* token;
@@ -18,6 +19,7 @@ unsigned short StringHyperV(char* buffer) {
 
     while (token != NULL) {
         buffer_word[count] = malloc(1024);
+        if (buffer_word[count] == NULL) { Msg_Box_Error("Buffer World Alloc Failed", "Alloc Failed"); }
         buffer_word[count] = strdup(token);
         count++;
         token = strtok(NULL, delim);
