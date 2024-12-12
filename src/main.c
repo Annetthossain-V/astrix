@@ -5,9 +5,12 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "header/object.h"
 #include "header/sys.h"
 #include "header/data.h"
 #include "header/lexer.h"
+#include "header/parser.h"
+#include "header/vm.h"
 
 void FileReader(const char* filename, char* func);
 void CmdReader();
@@ -85,8 +88,12 @@ void FileReader(const char* filename, char* func) {
         }
 
 
-        printf("Buff Word: %s\n", buff_word[0]);
+        OperandMetadataBasic_t *metadata = (OperandMetadataBasic_t*) malloc(52);
+        *metadata = ParserBasic();
+        vmMain(metadata);
+
         buffer_array_deallocate(&count);
+        free(metadata);
 
     }
 
@@ -105,7 +112,11 @@ void CmdReader() {
             Exit_Astrix(EXIT_SUCCESS);
         }
         unsigned short count = StringHyperV(buffer);
-        printf("First Word: %s \n", buffer_word[0]);
+        OperandMetadataBasic_t *metadata = (OperandMetadataBasic_t*) malloc(52);
+        *metadata = ParserBasic();
+        vmMain(metadata);
+
         buffer_array_deallocate(&count);
+        free(metadata);
     } 
 }

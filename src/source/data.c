@@ -102,7 +102,6 @@ void buffer_array_deallocate(unsigned short* index) {
     for (short i = 0; i != *index; i++) {
         free(buffer_word[i]);
     }
-    *index = 0;
     return;
 }
 

@@ -1,0 +1,4 @@
+====== ==== ==== ==== Registers ==== ==== ==== ==== 
+int/float regs are r0 and r1
+string regs are s0 and s1
+the stack is coming soon
