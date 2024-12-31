@@ -1,0 +1,9 @@
+Rules to follow in this code base
+
+rule 1:
+    all C structs must be in only C, using C structs in assembly 
+    is not allowed due to it's complexity.
+    
+rule 2:
+    complex things must be in C or other higher level languages,
+    simple things may be in assembly.

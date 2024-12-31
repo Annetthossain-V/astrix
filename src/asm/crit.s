@@ -12,11 +12,8 @@ CritExit:
         lea rdi, msg
         call puts
 
-        mov rdi, 199
-        call exit
-
         mov rax, 60
-        mov rdi, 999
+        mov rdi, 1
         syscall
 
         ret

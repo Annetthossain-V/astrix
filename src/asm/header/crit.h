@@ -1,3 +1,3 @@
 
 
-void Crit();
+void CritExit();

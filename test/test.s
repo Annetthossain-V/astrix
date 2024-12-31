@@ -1,7 +1,2 @@
 main:
-debug
-debug
-debug
-debug
-Hello, World
-Hi
+mov r0, 20
