@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef enum Operand {
     test,
@@ -11,6 +12,7 @@ typedef enum Register {
     r1,
     s0,
     s1,
+    stack,
     null,
 } Register_t;
 
@@ -27,9 +29,6 @@ typedef enum RegisterMix {
     s1_val,
     s1_s1,
     s0_s0,
-
-    // mix registers
-    // may not be used everywhere
     r0_s1,
     r0_s0,
     r1_s1,
@@ -38,7 +37,6 @@ typedef enum RegisterMix {
     s0_r0,
     s1_r1,
     s1_r0,
-
     null_r,
     null_s
 
@@ -57,7 +55,7 @@ typedef struct OperandMetadataBasic {
     
     bool RegisterValue;
     RegisterMix_t RegisterMix;
-    short id;
+    int16_t id;
+    int8_t group;
 } OperandMetadataBasic_t;
-
 

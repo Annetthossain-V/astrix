@@ -1,8 +1,6 @@
 .intel_syntax noprefix
 
 .global CritExit
-.extern exit
-.extern puts
 
 .data
 msg: .string "Critical Error, Exiting"
@@ -15,5 +13,8 @@ CritExit:
         mov rax, 60
         mov rdi, 1
         syscall
+        nop
+        nop
+        nop
 
-        ret
+.section .note.GNU-stack,"",@progbits

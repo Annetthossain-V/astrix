@@ -1,3 +1,4 @@
+#include <bits/types/stack_t.h>
 #include <stdlib.h>
 #include "../header/data.h"
 #include "../header/sys.h"
@@ -14,9 +15,28 @@ static double* r1;
 static char* s0;
 static char* s1;
 
+static void** stack;
+
 static char* functionName;
 static bool* jmp;
 
+
+
+
+void stackAlloc() {
+    stack = malloc(800);
+    for (int i = 0; i <= 49; i++) {
+        stack[i] = malloc(1024);
+    }
+    return;
+}
+
+void stackDealloc() {
+    for (int i = 0; i <= 49; i++) {
+        free(stack[i]);
+    }
+    free(stack);
+}
 
 void registrAllocate() {
     // integers
@@ -111,6 +131,7 @@ void data_init() {
     registrAllocate();
     functionNameAlloc();
     BasicAlloc();
+    stackAlloc();
 
     return;
 }
@@ -121,6 +142,7 @@ void data_deinit() {
     registerDealloc();
     functionNameDealloc();
     BasicAlloc();
+    stackDealloc(); // bug here
 
     return;
 }
@@ -156,4 +178,8 @@ char* GetFuncName() {
 
 bool* GetJmp() {
     return jmp;
+}
+
+void** getstack() {
+    return stack;
 }

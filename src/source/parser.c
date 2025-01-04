@@ -1,10 +1,11 @@
 
 #include <stdbool.h>
 #include <string.h>
+#include <stdint.h>
 
 #include "../header/data.h"
 #include "../header/object.h"
-
+#include "../header/id.h"
 
 OperandMetadataBasic_t ParserBasic() {
     OperandMetadataBasic_t metadata;
@@ -23,7 +24,8 @@ OperandMetadataBasic_t ParserBasic() {
         metadata.SecondRegister = null;
         metadata.RegisterValue = false;
         metadata.RegisterMix = r0_r0;
-        metadata.id = 0xFF;
+        metadata.id = ID_DEBUG;
+        metadata.group = GROUP_DEBUG;
     }
 
     else {

@@ -12,6 +12,7 @@
 #include "header/parser.h"
 #include "header/vm.h"
 
+
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
@@ -49,7 +50,7 @@ int main(int argc, char** argv) {
 
 
     data_deinit();
-    Exit_Astrix(EXIT_SUCCESS);
+    Exit_Astrix();
 }
 
 void FileReader(const char* filename, char* func) {
@@ -108,7 +109,8 @@ void CmdReader() {
         fgets(buffer, 1024, stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
         if (strcmp(buffer, "exit()") == 0) {
-            Exit_Astrix(EXIT_SUCCESS);
+            data_deinit();
+            Exit_Astrix();
         }
         unsigned short count = StringHyperV(buffer);
         OperandMetadataBasic_t *metadata = (OperandMetadataBasic_t*) malloc(52);

@@ -38,3 +38,9 @@ bool* GetJmp();
 void BasicDealloc();
 
 void BasicAlloc();
+
+void stackAlloc();
+
+void stackDealloc();
+
+void** getstack();
