@@ -30,19 +30,23 @@ config_t* _config(short argc, char** argv) {
     while (index != argc) {
         char *current = argv[index];
         short tmp = 0;
-        while (current[tmp] != '\0' || NULL) {
-            if (current[tmp] == '.' && current[(tmp+1)] == 's') {
-                if (args->FoundFileName == true) {
-                    Msg_Box_Error("Double input file", "Argument Error");
+
+        if (args->FoundFileName == false) {
+            while (current[tmp] != '\0' || NULL) {
+                if (current[tmp] == '.' && current[(tmp+1)] == 's') {
+                    if (args->FoundFileName == true) {
+                        Msg_Box_Error("Double input file", "Argument Error");
+                    }
+
+                    strcpy(args->filename, argv[index]);
+                    args->FoundFileName = true;
+                
                 }
 
-                strcpy(args->filename, argv[index]);
-                args->FoundFileName = true;
-                
+                tmp++;
             }
-
-            tmp++;
         }
+        
 
         index++;
     }
