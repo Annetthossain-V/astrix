@@ -1,5 +1,5 @@
 # Astrix
-A assembly like interpreted language.
+An assembly like interpreted language.
 
 # Why assembly 
 
