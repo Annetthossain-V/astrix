@@ -16,6 +16,7 @@ int vmMain(OperandMetadataBasic_t* metadata) {
 }
 
 bool vmId(OperandMetadataBasic_t* metadata) {
+// add group 
     switch (metadata->id) {
         case ID_DEBUG:
             printf("DEBUG POINT\n");
