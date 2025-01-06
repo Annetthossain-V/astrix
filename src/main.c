@@ -16,6 +16,10 @@
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
+struct _config() {
+
+}
+
 int main(int argc, char** argv) {
     data_init();
     bool Cmdline;
