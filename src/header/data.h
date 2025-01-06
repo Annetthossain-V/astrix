@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include "object.h"
 
 char* Get_buffer();
 
@@ -44,3 +45,5 @@ void stackAlloc();
 void stackDealloc();
 
 void** getstack();
+
+config_t* GetArgs();

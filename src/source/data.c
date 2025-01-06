@@ -4,9 +4,13 @@
 #include "../header/sys.h"
 #include <string.h>
 #include <stdbool.h>
+#include "../header/object.h"
+
 
 static char* buffer;
 static char** buffer_word;
+
+static config_t* args;
 
 // Registers
 static double* r0;
@@ -182,4 +186,8 @@ bool* GetJmp() {
 
 void** getstack() {
     return stack;
+}
+
+config_t* GetArgs() {
+    return args;
 }

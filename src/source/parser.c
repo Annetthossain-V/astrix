@@ -12,6 +12,7 @@ OperandMetadataBasic_t ParserBasic() {
     char** BufferWord = Get_buffer_word();
 
     int result;
+    bool match;
 
     result = strcmp(BufferWord[0], "debug");
     if (result == 0) {
@@ -26,10 +27,28 @@ OperandMetadataBasic_t ParserBasic() {
         metadata.RegisterMix = r0_r0;
         metadata.id = ID_DEBUG;
         metadata.group = GROUP_DEBUG;
+
+        match = true;
+    }
+    result = strcmp(BufferWord[0], "dprintreg");
+    if (result == 0) {
+        // new
+
+        match = true;
     }
 
-    else {
-        // todo
+    if (match == false) {
+        metadata.SingleOperand = NULL;
+        metadata.DoubleOperand = NULL;
+        metadata.TripleOperand = NULL;
+        metadata.RequireRegister = NULL;
+        metadata.DoubleRegister = NULL;
+        metadata.FirstRegister = null;
+        metadata.SecondRegister = null;
+        metadata.RegisterValue = NULL;
+        metadata.RegisterMix = r0_r0;
+        metadata.id = ID_NONE;
+        metadata.group = GROUP_NONE;
     }
 
     return metadata;

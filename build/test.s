@@ -1,2 +1,2 @@
 main:
-mov r0, 20
+debug

@@ -16,11 +16,44 @@
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
-struct _config() {
+config_t* _config(short argc, char** argv) {
+    short index = 1;
+    config_t *args = malloc(sizeof(config_t) * 4);
+    args->FoundFileName = false;
 
+    if (argc < 2) {
+        strcpy(args->filename, "NULL");
+        args->FoundFileName = false;
+        return args;
+    }
+
+    while (index != argc) {
+        char *current = argv[index];
+        short tmp = 0;
+        while (current[tmp] != '\0' || NULL) {
+            if (current[tmp] == '.' && current[(tmp+1)] == 's') {
+                if (args->FoundFileName == true) {
+                    Msg_Box_Error("Double input file", "Argument Error");
+                }
+
+                strcpy(args->filename, argv[index]);
+                args->FoundFileName = true;
+                
+            }
+
+            tmp++;
+        }
+
+        index++;
+    }
+
+    return args;
 }
 
 int main(int argc, char** argv) {
+    config_t *args = GetArgs();
+    args = _config(argc, argv);
+    
     data_init();
     bool Cmdline;
     
@@ -38,7 +71,7 @@ int main(int argc, char** argv) {
     }
 
     if (Cmdline == false) {
-        const char* filename = argv[1];
+        const char* filename = args->filename;
         while (true) {
             if (*jmp == true) {
                 *jmp = false;
@@ -52,7 +85,7 @@ int main(int argc, char** argv) {
         CmdReader();
     }
 
-
+    free(args);
     data_deinit();
     Exit_Astrix();
 }

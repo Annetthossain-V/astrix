@@ -8,11 +8,11 @@ typedef enum Operand {
 } Operand_t;
 
 typedef enum Register {
-    r0,
-    r1,
-    s0,
-    s1,
-    stack,
+    R0,
+    R1,
+    S0,
+    S1,
+    STACK,
     null,
 } Register_t;
 
@@ -59,3 +59,8 @@ typedef struct OperandMetadataBasic {
     int8_t group;
 } OperandMetadataBasic_t;
 
+
+typedef struct Config{
+    char filename[24];
+    bool FoundFileName;
+} config_t;
