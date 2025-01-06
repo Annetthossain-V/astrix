@@ -11,3 +11,4 @@ also creating an assembly like language is easier.
 
 This language is supposed be assembly like. 
 
+How the language is supposed look like is up to the individual coding it but it must resemble assembly of any architecture, OS and assembler.
