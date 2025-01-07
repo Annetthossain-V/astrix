@@ -11,14 +11,15 @@
 #include "header/lexer.h"
 #include "header/parser.h"
 #include "header/vm.h"
-
+#include "asm/header/simple.h"
+#include "asm/header/crit.h"
 
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
 config_t* _config(short argc, char** argv) {
     short index = 1;
-    config_t *args = malloc(sizeof(config_t) * 4);
+    config_t *args = malloc(sizeof(config_t) + 8);
     args->FoundFileName = false;
 
     if (argc < 2) {
@@ -30,21 +31,29 @@ config_t* _config(short argc, char** argv) {
     while (index != argc) {
         char *current = argv[index];
         short tmp = 0;
+        short currentLen = strlen_ASM(current);
 
         if (args->FoundFileName == false) {
             while (current[tmp] != '\0' || NULL) {
                 if (current[tmp] == '.' && current[(tmp+1)] == 's') {
-                    if (args->FoundFileName == true) {
-                        Msg_Box_Error("Double input file", "Argument Error");
-                    }
 
+                    short len = strlen_ASM(argv[index]);
+                    if (len > 24) { printf("File Name Too Long\n"); CritExit(); }
                     strcpy(args->filename, argv[index]);
                     args->FoundFileName = true;
                 
                 }
+                if (current[tmp] == '.' && current[(tmp+1)] != 's') {
+                    printf("Invalid File Format, Use .s instead\n");
+                    CritExit();
+                }
 
                 tmp++;
             }
+        }
+        if (current[0] == '-') {
+            // arg
+            
         }
         
 
@@ -101,7 +110,7 @@ void FileReader(const char* filename, char* func) {
 
     FILE *file;
     file = fopen(filename, "r");
-
+    if (file == NULL) { Msg_Box_Error("File Does not Exist", "Invalid File"); }
 
     while (fgets(buffer, 1024, file) != NULL) {
         char* newline = strchr(buffer, '\n');

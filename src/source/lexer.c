@@ -7,6 +7,7 @@
 
 #include "../header/data.h"
 #include "../header/sys.h"
+#include "../header/object.h"
 
 unsigned short StringHyperV(char* buffer) {
     char* token;
@@ -26,4 +27,41 @@ unsigned short StringHyperV(char* buffer) {
     }
 
     return count;
+}
+
+
+Register_t StrToReg(char *str) {
+    Register_t RetVal;
+    char cmp;
+    bool match = false;
+    cmp = strcmp(str, "r0");
+    if (cmp == 0) {
+        match = true;
+        RetVal = R0;
+        return RetVal;
+    }
+    cmp = strcmp(str, "r1");
+    if (cmp == 0) {
+        match = true;
+        RetVal = R1;
+        return RetVal;
+    }
+    cmp = strcmp(str, "s0");
+    if (cmp == 0) {
+        match = true;
+        RetVal = S0;
+        return RetVal;
+    }
+    cmp = strcmp(str, "s1");
+    if (cmp == 0) {
+        match = true;
+        RetVal = S1;
+        return RetVal;
+    }
+
+
+    if (match == false) {
+        Msg_Box_Error("lexer.c: StrToReg", "Invalid Register");
+    }
+
 }

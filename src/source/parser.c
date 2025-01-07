@@ -6,6 +6,7 @@
 #include "../header/data.h"
 #include "../header/object.h"
 #include "../header/id.h"
+#include "../header/lexer.h"
 
 OperandMetadataBasic_t ParserBasic() {
     OperandMetadataBasic_t metadata;
@@ -24,7 +25,7 @@ OperandMetadataBasic_t ParserBasic() {
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
         metadata.RegisterValue = false;
-        metadata.RegisterMix = r0_r0;
+        metadata.RegisterMix = null_null;
         metadata.id = ID_DEBUG;
         metadata.group = GROUP_DEBUG;
 
@@ -32,7 +33,18 @@ OperandMetadataBasic_t ParserBasic() {
     }
     result = strcmp(BufferWord[0], "dprintreg");
     if (result == 0) {
-        // new
+        Register_t second = StrToReg(BufferWord[1]);
+        metadata.SingleOperand = false;
+        metadata.DoubleOperand = true;
+        metadata.TripleOperand = false;
+        metadata.RequireRegister = true;
+        metadata.DoubleRegister = false;
+        metadata.FirstRegister = second;
+        metadata.SecondRegister = null;
+        metadata.RegisterValue = false;
+        metadata.RegisterMix = null_null;
+        metadata.id = ID_DPRINTREG // error
+        metadata.group = GROUP_DEBUG;
 
         match = true;
     }

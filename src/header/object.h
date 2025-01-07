@@ -37,8 +37,7 @@ typedef enum RegisterMix {
     s0_r0,
     s1_r1,
     s1_r0,
-    null_r,
-    null_s
+    null_null
 
 } RegisterMix_t;
 
