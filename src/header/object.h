@@ -62,4 +62,5 @@ typedef struct OperandMetadataBasic {
 typedef struct Config{
     char filename[24];
     bool FoundFileName;
+    bool cli;
 } config_t;

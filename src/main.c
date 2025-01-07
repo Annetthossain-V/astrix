@@ -76,7 +76,7 @@ int main(int argc, char** argv) {
     bool* jmp = GetJmp();
     *jmp = true;
 
-
+    // need to remake this
     if (argc <= 1) {
         Cmdline = true;
     } else {
