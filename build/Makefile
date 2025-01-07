@@ -30,7 +30,7 @@ build:
 	$(ASM) ../src/asm/crit.s -o crit.o
 	$(CXX)  $(AXXFILE) -c -O3
 	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o -o $(OUTFILE) 
-	mv $(OBJFILE) $(OBJ_DIR)
+	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o $(OBJ_DIR)
 
 
 release:
@@ -38,7 +38,7 @@ release:
 	$(ASM) ../src/asm/crit.s -o crit.o
 	$(CXX) $(AXXFILE) -c -O3
 	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o -o $(OUTFILE)
-	mv $(OBJFILE) $(OBJ_DIR)
+	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o $(OBJ_DIR)
 	strip $(OUTFILE)
 
 clean:
