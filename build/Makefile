@@ -5,7 +5,6 @@ LD = gcc
 ASM = as
 CXX = g++
 RS = gccr
-AXX = g++
 
 CFLAGS_D = -O0 -std=c23 -c -Werror -I../src/header -g
 LDFLAGS = -static
@@ -29,14 +28,16 @@ OUTFILE = astrix
 build:
 	$(CC) $(CFLAGS_D) $(SOURCE) $(MAINC)
 	$(ASM) ../src/asm/crit.s -o crit.o
-	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) -o $(OUTFILE) 
+	$(CXX)  $(AXXFILE) -c -O3
+	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o -o $(OUTFILE) 
 	mv $(OBJFILE) $(OBJ_DIR)
 
 
 release:
 	$(CC) $(CFLAGS_R) $(MAINC) $(SOURCE)
 	$(ASM) ../src/asm/crit.s -o crit.o
-	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) -o $(OUTFILE)
+	$(CXX) $(AXXFILE) -c -O3
+	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) main.o -o $(OUTFILE)
 	mv $(OBJFILE) $(OBJ_DIR)
 	strip $(OUTFILE)
 
