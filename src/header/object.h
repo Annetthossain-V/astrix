@@ -64,3 +64,8 @@ typedef struct Config{
     bool FoundFileName;
     bool cli;
 } config_t;
+
+typedef union stack {
+    char s[1024];
+    double r;
+} sstack;

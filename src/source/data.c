@@ -10,6 +10,7 @@
 static char* buffer;
 static char** buffer_word;
 
+// switch args to local variable
 static config_t* args;
 
 static bool *cli;
@@ -21,6 +22,7 @@ static double* r1;
 static char* s0;
 static char* s1;
 
+// switch stack to union
 static void** stack;
 static unsigned short* sp;
 
