@@ -69,3 +69,12 @@ typedef union stack {
     char s[1024];
     double r;
 } sstack;
+
+typedef struct cmp {
+    bool e; // equal to
+    bool ne; // not equal to
+    bool g; // greater then
+    bool ge; // greater or equal
+    bool l; // less then
+    bool le; // less or equal
+} cmp_t;
