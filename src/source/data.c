@@ -12,6 +12,8 @@ static char** buffer_word;
 
 static config_t* args;
 
+static bool *cli;
+
 // Registers
 static double* r0;
 static double* r1;
@@ -20,6 +22,8 @@ static char* s0;
 static char* s1;
 
 static void** stack;
+static unsigned short* sp;
+
 
 static char* functionName;
 static bool* jmp;
@@ -91,13 +95,14 @@ void functionNameDealloc() {
 
 void BasicAlloc() {
     jmp = (bool*) malloc(1);
-    if (jmp == NULL) { while (true) {} } //? temp
+    cli = malloc(1);
 
     return;
 }
 
 void BasicDealloc() {
     free(jmp);
+    free(cli);
 }
 
 void buffer_deallocate() {
@@ -190,4 +195,8 @@ void** getstack() {
 
 config_t* GetArgs() {
     return args;
+}
+
+bool* GetCli() {
+    return cli;
 }

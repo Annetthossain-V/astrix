@@ -47,3 +47,5 @@ void stackDealloc();
 void** getstack();
 
 config_t* GetArgs();
+
+bool* GetCli();

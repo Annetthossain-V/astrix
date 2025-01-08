@@ -10,6 +10,13 @@ void Exit_Astrix() {
 
 void Msg_Box_Error(char* msg, char* title) {
   printf("%s: %s\n", title, msg);
-  data_deinit(); // causes double free
+  bool *cli = GetCli();
+  if (*cli == true) { return; }
+
+  data_deinit();
   CritExit();
+}
+
+void* dlopenAstrix() {
+  return NULL;
 }

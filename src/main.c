@@ -14,6 +14,9 @@
 #include "asm/header/simple.h"
 #include "asm/header/crit.h"
 
+
+const char* version = "Version: 0.0.1 Alpha, Compiled on 8/1/2024";
+
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
@@ -51,9 +54,9 @@ config_t* _config(short argc, char** argv) {
                 tmp++;
             }
         }
-        if (current[0] == '-') {
-            // arg
-            
+        if (current[0] == '-' && current[1] == 'v') {
+            printf("%s\n", version);
+            Exit_Astrix();
         }
         
 
@@ -68,22 +71,18 @@ int main(int argc, char** argv) {
     args = _config(argc, argv);
     
     data_init();
-    bool Cmdline;
-    
+    bool *cli = GetCli();
+
     char* funcName = GetFuncName();
     strcpy(funcName, "main:");
 
     bool* jmp = GetJmp();
     *jmp = true;
 
-    // need to remake this
-    if (argc <= 1) {
-        Cmdline = true;
-    } else {
-        Cmdline = false;
-    }
+    if (args->FoundFileName == true) { args->cli = false; *cli = false;; }
+    else if (args->FoundFileName == false) { args->cli = true; *cli = true; }
 
-    if (Cmdline == false) {
+    if (args->cli == false) {
         const char* filename = args->filename;
         while (true) {
             if (*jmp == true) {
@@ -94,7 +93,7 @@ int main(int argc, char** argv) {
             }
         }
         
-    } else if (Cmdline == true) {
+    } else if (args->cli == true) {
         CmdReader();
     }
 

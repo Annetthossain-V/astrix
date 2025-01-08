@@ -1,10 +1,6 @@
 
 #include "../header/object.h"
-
-extern "C" double* get_r0();
-extern "C" double* get_r1();
-extern "C" char* get_s0();
-extern "C" char* get_s1();
+#include "header/data.hxx"
 
 
 class risc {
