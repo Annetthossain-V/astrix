@@ -62,6 +62,10 @@ Register_t StrToReg(char *str) {
 
     if (match == false) {
         Msg_Box_Error("lexer.c: StrToReg", "Invalid Register");
+        
     }
+
+    RetVal = null;
+    return RetVal;
 
 }

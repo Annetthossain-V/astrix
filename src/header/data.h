@@ -44,8 +44,10 @@ void stackAlloc();
 
 void stackDealloc();
 
-void** getstack();
+sstack** getstack();
 
 config_t* GetArgs();
 
 bool* GetCli();
+
+unsigned short* GetSp();

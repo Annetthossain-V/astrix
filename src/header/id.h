@@ -5,7 +5,7 @@
 
 #define ID_DEBUG 0xFF
 #define ID_NONE 0x63
-#define ID_DPRINTREG
+#define ID_DPRINTREG 0xFE
 
 
 

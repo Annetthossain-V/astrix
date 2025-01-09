@@ -1,18 +1,17 @@
 # makefile to build the astrix x86 binary
 
 CC = gcc
-LD = gcc
+LD = g++
 ASM = as
 CXX = g++
 RS = gccr
 
-CFLAGS_D = -O0 -std=c23 -c -Werror -I../src/header -g
+CFLAGS_D = -O0 -std=c23 -c -I../src/header -g -Wall -Wno-unused-variable
 LDFLAGS = -static
-CXXFLAGS_D = -O0 -c -Werror -g -std=c++23
+CXXFLAGS_D = -O0 -c -g -std=c++23 -Wall -Wno-unused-variable
 
-CFLAGS_R = -O2 -std=c23 -c -Werror -march=x86-64-v2 -msse4.2 -I../src/header
-CXXFLAGS_R = -O2 -c -Werror -std=c++23 -march=x86-64-v2 -msse4.2
-
+CFLAGS_R = -O2 -std=c23 -c -Werror -march=x86-64-v2 -msse4.2 -I../src/header -Wall -Wno-unused-variable
+CXXFLAGS_R = -O2 -c -Werror -std=c++23 -march=x86-64-v2 -msse4.2 -Wall -Wno-unused-variable
 SOURCE := $(wildcard ../src/source/*.c)
 SOURCE_CXX := $(wildcard ../src/cxx/*.cxx)
 AXXFILE := $(wildcard ../src/asm/*.S)

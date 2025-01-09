@@ -16,14 +16,15 @@ static config_t* args;
 static bool *cli;
 
 // Registers
+// add more in the future
 static double* r0;
 static double* r1;
 
 static char* s0;
 static char* s1;
 
-// switch stack to union
-static void** stack;
+
+static sstack** stack;
 static unsigned short* sp;
 
 
@@ -36,7 +37,7 @@ static bool* jmp;
 void stackAlloc() {
     stack = malloc(800);
     for (int i = 0; i <= 49; i++) {
-        stack[i] = malloc(1024);
+        stack[i] = malloc(((1024 + 8) + 248));
     }
     return;
 }
@@ -98,6 +99,7 @@ void functionNameDealloc() {
 void BasicAlloc() {
     jmp = (bool*) malloc(1);
     cli = malloc(1);
+    sp = malloc((2 + 2));
 
     return;
 }
@@ -105,6 +107,7 @@ void BasicAlloc() {
 void BasicDealloc() {
     free(jmp);
     free(cli);
+    free(sp);
 }
 
 void buffer_deallocate() {
@@ -191,7 +194,7 @@ bool* GetJmp() {
     return jmp;
 }
 
-void** getstack() {
+sstack** getstack() {
     return stack;
 }
 
@@ -201,4 +204,8 @@ config_t* GetArgs() {
 
 bool* GetCli() {
     return cli;
+}
+
+unsigned short* GetSp() {
+    return sp;
 }

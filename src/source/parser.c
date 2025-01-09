@@ -43,7 +43,7 @@ OperandMetadataBasic_t ParserBasic() {
         metadata.SecondRegister = null;
         metadata.RegisterValue = false;
         metadata.RegisterMix = null_null;
-        metadata.id = ID_DPRINTREG // error
+        metadata.id = ID_DPRINTREG;
         metadata.group = GROUP_DEBUG;
 
         match = true;
