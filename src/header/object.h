@@ -14,37 +14,23 @@ typedef enum Register {
     S1,
     STACK,
     null,
+    SST1,
+    SST2,
+    SST3,
+    SST4,
+    SST5,
+    SST6,
+    
+    SSTF1,
+    SSTF2,
+    SSTF3,
 } Register_t;
 
-typedef enum RegisterMix {
-    r0_r1,
-    r1_r0,
-    r0_val,
-    r1_val,
-    r1_r1,
-    r0_r0,
-    s0_s1,
-    s1_s0,
-    s0_val,
-    s1_val,
-    s1_s1,
-    s0_s0,
-    r0_s1,
-    r0_s0,
-    r1_s1,
-    r1_s0,
-    s0_r1,
-    s0_r0,
-    s1_r1,
-    s1_r0,
-    null_null
 
-} RegisterMix_t;
 
 typedef struct OperandMetadataBasic {
     Register_t FirstRegister;
     Register_t SecondRegister;
-    RegisterMix_t RegisterMix;
 
     char* content;
     char* content2;
@@ -74,3 +60,16 @@ typedef struct cmp {
     bool l; // less then
     bool le; // less or equal
 } cmp_t;
+
+typedef enum StorageRegister {
+    ST1,
+    ST2,
+    ST3,
+    ST4,
+    ST5,
+    ST6,
+    
+    STF1,
+    STF2,
+    STF3,
+} StorageRegister_t;

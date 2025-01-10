@@ -20,7 +20,6 @@ OperandMetadataBasic_t ParserBasic() {
     if (result == 0) {
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
-        metadata.RegisterMix = null_null;
         metadata.id = ID_DEBUG;
         metadata.group = GROUP_DEBUG;
 
@@ -28,10 +27,9 @@ OperandMetadataBasic_t ParserBasic() {
     }
     result = strcmp(BufferWord[0], "dprintreg");
     if (result == 0) {
-        Register_t second = StrToReg(BufferWord[1]);
-        metadata.FirstRegister = second;
+        Register_t first = StrToReg(BufferWord[1]);
+        metadata.FirstRegister = first;
         metadata.SecondRegister = null;
-        metadata.RegisterMix = null_null;
         metadata.id = ID_DPRINTREG;
         metadata.group = GROUP_DEBUG;
 
@@ -43,7 +41,6 @@ OperandMetadataBasic_t ParserBasic() {
     if (match == false) {
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
-        metadata.RegisterMix = r0_r0;
         metadata.id = ID_NONE;
         metadata.group = GROUP_NONE;
     }

@@ -31,6 +31,9 @@ bool vmId(OperandMetadataBasic_t* metadata) {
                 case ID_DPRINTREG:
                     dprintregAPI(metadata);
                     return true;
+                case ID_DPRINTSTK:
+                    dprintstk();
+                    return true;
 
                 default:
                     Msg_Box_Error("Id did not match", "Invalid MetaData id");

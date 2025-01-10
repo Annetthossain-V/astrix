@@ -157,6 +157,7 @@ void CmdReader() {
         printf("Astrix $> ");
         fgets(buffer, 1024, stdin);
         buffer[strcspn(buffer, "\n")] = '\0';
+        if (strcmp(buffer, "") == 0) { continue; }
         if (strcmp(buffer, "exit()") == 0) {
             data_deinit();
             Exit_Astrix();

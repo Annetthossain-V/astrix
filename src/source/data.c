@@ -24,6 +24,18 @@ static double* r1;
 static char* s0;
 static char* s1;
 
+// storage registers
+static sstack* st1;
+static sstack* st2;
+static sstack* st3;
+static sstack* st4;
+static sstack* st5;
+static sstack* st6;
+
+static sstack* stf1;
+static sstack* stf2;
+static sstack* stf3;
+
 
 static sstack** stack;
 static unsigned short* sp;
@@ -34,6 +46,32 @@ static bool* jmp;
 
 
 
+
+
+void stRegAlloc() {
+    st1 = malloc(((1024+8) + 12));
+    st2 = malloc(((1024+8) + 12));
+    st3 = malloc(((1024+8) + 12));
+    st4 = malloc(((1024+8) + 12));
+    st5 = malloc(((1024+8) + 12));
+    st6 = malloc(((1024+8) + 12));
+    stf1 = malloc(((1024+8) + 12));
+    stf2 = malloc(((1024+8) + 12));
+    stf3 = malloc(((1024+8) + 12));
+    return;
+}
+
+void stRegDealloc() {
+    free(st1);
+    free(st2);
+    free(st3);
+    free(st4);
+    free(st5);
+    free(st6);
+    free(stf1);
+    free(stf2);
+    free(stf3);
+}
 
 void stackAlloc() {
     stack = malloc(800);
@@ -149,6 +187,7 @@ void data_init() {
     functionNameAlloc();
     BasicAlloc();
     stackAlloc();
+    stRegAlloc();
 
     return;
 }
@@ -160,10 +199,10 @@ void data_deinit() {
     functionNameDealloc();
     BasicAlloc();
     stackDealloc(); // bug here
+    stRegDealloc();
 
     return;
 }
-
 
 char* get_s1() {
     return s1;
@@ -215,4 +254,29 @@ unsigned short* GetSp() {
 
 bool* getAdmin() {
     return admin;
+}
+
+sstack* GetstRegister(StorageRegister_t Register) {
+    switch (Register) {
+        case ST1:
+            return st1;
+        case ST2:
+            return st2;
+        case ST3:
+            return st3;
+        case ST4:
+            return st4;
+        case ST5:
+            return st5;
+        case ST6:
+            return st6;
+        case STF1:
+            return stf1;
+        case STF2:
+            return stf2;
+        case STF3:
+            return stf3;
+        default:
+            return NULL;
+    }
 }
