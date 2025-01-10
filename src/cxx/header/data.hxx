@@ -51,3 +51,9 @@ extern "C" void stackDealloc();
 extern "C" void** getstack();
 
 extern "C" config_t* GetArgs();
+
+extern "C" bool* GetCli();
+
+extern "C" unsigned short* GetSp();
+
+extern "C" bool* getAdmin();

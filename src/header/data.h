@@ -51,3 +51,5 @@ config_t* GetArgs();
 bool* GetCli();
 
 unsigned short* GetSp();
+
+bool* getAdmin();

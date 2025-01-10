@@ -42,18 +42,14 @@ typedef enum RegisterMix {
 } RegisterMix_t;
 
 typedef struct OperandMetadataBasic {
-    bool SingleOperand;
-    bool DoubleOperand;
-    bool TripleOperand;
-
-    bool RequireRegister;
-    bool DoubleRegister;
-
     Register_t FirstRegister;
     Register_t SecondRegister;
-    
-    bool RegisterValue;
     RegisterMix_t RegisterMix;
+
+    char* content;
+    char* content2;
+    char* content3;
+
     int16_t id;
     int8_t group;
 } OperandMetadataBasic_t;

@@ -7,6 +7,7 @@
 #include "../header/object.h"
 #include "../header/id.h"
 #include "../header/lexer.h"
+#include "../cxx/header/export.h"
 
 OperandMetadataBasic_t ParserBasic() {
     OperandMetadataBasic_t metadata;
@@ -17,14 +18,8 @@ OperandMetadataBasic_t ParserBasic() {
 
     result = strcmp(BufferWord[0], "debug");
     if (result == 0) {
-        metadata.SingleOperand = true;
-        metadata.DoubleOperand = false;
-        metadata.TripleOperand = false;
-        metadata.RequireRegister = false;
-        metadata.DoubleRegister = false;
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
-        metadata.RegisterValue = false;
         metadata.RegisterMix = null_null;
         metadata.id = ID_DEBUG;
         metadata.group = GROUP_DEBUG;
@@ -34,14 +29,8 @@ OperandMetadataBasic_t ParserBasic() {
     result = strcmp(BufferWord[0], "dprintreg");
     if (result == 0) {
         Register_t second = StrToReg(BufferWord[1]);
-        metadata.SingleOperand = false;
-        metadata.DoubleOperand = true;
-        metadata.TripleOperand = false;
-        metadata.RequireRegister = true;
-        metadata.DoubleRegister = false;
         metadata.FirstRegister = second;
         metadata.SecondRegister = null;
-        metadata.RegisterValue = false;
         metadata.RegisterMix = null_null;
         metadata.id = ID_DPRINTREG;
         metadata.group = GROUP_DEBUG;
@@ -49,15 +38,11 @@ OperandMetadataBasic_t ParserBasic() {
         match = true;
     }
 
+    ParserP(&metadata, &match, BufferWord);
+
     if (match == false) {
-        metadata.SingleOperand = NULL;
-        metadata.DoubleOperand = NULL;
-        metadata.TripleOperand = NULL;
-        metadata.RequireRegister = NULL;
-        metadata.DoubleRegister = NULL;
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
-        metadata.RegisterValue = NULL;
         metadata.RegisterMix = r0_r0;
         metadata.id = ID_NONE;
         metadata.group = GROUP_NONE;

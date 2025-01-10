@@ -14,6 +14,7 @@ static char** buffer_word;
 static config_t* args;
 
 static bool *cli;
+static bool *admin;
 
 // Registers
 // add more in the future
@@ -100,6 +101,7 @@ void BasicAlloc() {
     jmp = (bool*) malloc(1);
     cli = malloc(1);
     sp = malloc((2 + 2));
+    admin = malloc(1);
 
     return;
 }
@@ -108,6 +110,7 @@ void BasicDealloc() {
     free(jmp);
     free(cli);
     free(sp);
+    free(admin);
 }
 
 void buffer_deallocate() {
@@ -208,4 +211,8 @@ bool* GetCli() {
 
 unsigned short* GetSp() {
     return sp;
+}
+
+bool* getAdmin() {
+    return admin;
 }
