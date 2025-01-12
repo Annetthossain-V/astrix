@@ -3,6 +3,7 @@
 
 .section .text
 .global strlen_ASM
+.global kmalloc
 strlen_ASM:
     xor eax, eax
     cmp BYTE PTR [rdi], 0
@@ -17,5 +18,14 @@ strlen_ASM:
 
 .L4:
     ret
+
+
+kmalloc:
+    mov rax, 1024
+    mul rdi
+    mov rdi, rax
+    call malloc
+    ret
+    nop
 
 .section .note.GNU-stack, "",@progbits

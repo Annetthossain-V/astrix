@@ -66,6 +66,7 @@ config_t* _config(short argc, char** argv) {
     return args;
 }
 
+
 int main(int argc, char** argv) {
     config_t *args = GetArgs();
     args = _config(argc, argv);
