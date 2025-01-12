@@ -13,4 +13,4 @@ This language is supposed be assembly like.
 
 How the language is supposed look like is up to the individual coding it but it must resemble assembly of any architecture, OS and assembler.
 The language does not do syntax checks, safety is also low.
-This language expects you to know to it works and invalid syntax coud cause instability.
+This language expects you to know to it works and invalid syntax and arguments could cause instability.
