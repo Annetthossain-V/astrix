@@ -2,6 +2,7 @@
 #include "header/parser.hxx"
 #include <string>
 #include "../header/id.h"
+#include "header/sys.hxx"
 
 // C api
 extern "C" void ParserP(OperandMetadataBasic_t* metadata, bool* match, char** BufferWord) {
@@ -26,7 +27,26 @@ namespace parser {
             metadata->group = GROUP_DEBUG;
             *match = true;
         }
-        
+        else if (First == "movl") {
+            if (BufferWord[1] == NULL || BufferWord[2] == NULL)  { sys::MsgError("parser+.cxx","Invalid Number Of Arguments"); return; }
+            Register_t First = StrToReg(BufferWord[1]);
+            Register_t Second = StrToReg(BufferWord[2]);
+            metadata->id = ID_MOVL;
+            metadata->group = GROUP_MOV;
+            metadata->FirstRegister = First;
+            metadata->SecondRegister = Second;
+            *match = true;
+        }
+        else if (First == "movs") {
+            if (BufferWord[1] == NULL || BufferWord[2] == NULL)  { sys::MsgError("parser+.cxx","Invalid Number Of Arguments"); return; }
+            Register_t First = StrToReg(BufferWord[1]);
+            Register_t Second = StrToReg(BufferWord[2]);
+            metadata->id = ID_MOVS;
+            metadata->group = GROUP_MOV;
+            metadata->FirstRegister = First;
+            metadata->SecondRegister = Second;
+            *match = true;
+        }
     }
 
     Register_t ParserBasic::StrToReg(std::string str) {

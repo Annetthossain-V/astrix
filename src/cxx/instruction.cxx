@@ -2,6 +2,7 @@
 #include "../header/object.h"
 #include "header/data.hxx"
 #include "header/sys.hxx"
+#include "src/header/object.h"
 #include <cstdio>
 #include <cstdlib>
 
@@ -9,6 +10,8 @@ namespace inst {
 class risc {
 public:
   bool movs(OperandMetadataBasic_t* metadata);
+
+  bool movl(OperandMetadataBasic_t* metadata);
 };
 
 class cisc {

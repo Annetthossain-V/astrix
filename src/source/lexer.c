@@ -25,7 +25,7 @@ unsigned short StringHyperV(char* buffer) {
         count++;
         token = strtok(NULL, delim);
     }
-
+    buffer_word[(count + 1)] = NULL;
     return count;
 }
 

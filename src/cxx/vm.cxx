@@ -13,7 +13,6 @@ extern "C" int vmMain(OperandMetadataBasic_t* metadata) {
 
 
     std::thread vmIdThread(vmId, metadata);
-    
 
     vmIdThread.join();
     return 0;
@@ -44,7 +43,15 @@ extern "C" bool vmId(OperandMetadataBasic_t* metadata) {
         case GROUP_NONE:
             sys::MsgError("Group Mismatch", "invalid Group");
             return false;
-        
+
+        case GROUP_MOV:
+            case ID_MOVL:
+
+                return true;
+
+            case ID_MOVS:
+
+                return true;
 
         default:
             sys::MsgError("Invalid MetaData Group", "Group did not match");
