@@ -3,9 +3,6 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-typedef enum Operand {
-    test,
-} Operand_t;
 
 typedef enum Register {
     R0,

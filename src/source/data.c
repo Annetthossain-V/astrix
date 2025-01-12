@@ -16,6 +16,8 @@ static config_t* args;
 static bool *cli;
 static bool *admin;
 
+static bool *sstring;
+
 // Registers
 // add more in the future
 static double* r0;
@@ -140,6 +142,7 @@ void BasicAlloc() {
     cli = malloc(1);
     sp = malloc((2 + 2));
     admin = malloc(1);
+    sstring = malloc(1);
 
     return;
 }
@@ -279,4 +282,8 @@ sstack* GetstRegister(StorageRegister_t Register) {
         default:
             return NULL;
     }
+}
+
+bool* getsstring() {
+    return sstring;
 }

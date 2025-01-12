@@ -55,3 +55,5 @@ unsigned short* GetSp();
 bool* getAdmin();
 
 sstack* GetstRegister(StorageRegister_t Register);
+
+bool* getsstring();

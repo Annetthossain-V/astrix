@@ -59,3 +59,5 @@ extern "C" unsigned short* GetSp();
 extern "C" bool* getAdmin();
 
 extern "C" sstack* GetstRegister(StorageRegister_t Register);
+
+extern "C" bool* getsstring();
