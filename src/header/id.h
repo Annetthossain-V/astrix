@@ -12,9 +12,11 @@
 #define MOVL 252
 #define MOVS 251
 
+#define nop 250
 
 #define GROUP_DEBUG 1
 #define GROUP_NONE 0
+#define GROUP_MOV
 
 
 #endif // ID_H

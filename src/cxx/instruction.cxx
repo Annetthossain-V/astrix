@@ -8,7 +8,7 @@
 namespace inst {
 class risc {
 public:
-  bool mov(OperandMetadataBasic_t* metadata);
+  bool movs(OperandMetadataBasic_t* metadata);
 };
 
 class cisc {

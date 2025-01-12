@@ -7,15 +7,15 @@
 #include "header/sys.hxx"
 #include "../header/id.h"
 #include "header/instruction.hxx"
-
-extern "C" bool vmId(OperandMetadataBasic_t* metadata);
+#include "header/vm.hxx"
 
 extern "C" int vmMain(OperandMetadataBasic_t* metadata) {
 
-    // std::thread vmIdThread(vmId, metadata);
-    vmId(metadata);
 
+    std::thread vmIdThread(vmId, metadata);
+    
 
+    vmIdThread.join();
     return 0;
 }
 
