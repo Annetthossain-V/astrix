@@ -6,6 +6,8 @@
 #include <stdbool.h>
 #include "../header/object.h"
 
+extern void CritExit();
+
 
 static char* buffer;
 static char** buffer_word;
@@ -74,18 +76,33 @@ void stRegDealloc() {
     free(stf2);
     free(stf3);
 }
-
+#include <stdio.h>
 void stackAlloc() {
-    stack = malloc(800);
-    for (int i = 0; i <= 49; i++) {
+    unsigned short size;
+    const char* VarName = "STACK_SIZE";
+    const char* Var = getenv(VarName);
+    if (Var == NULL) { size = 100; }
+    else { size = atoi(Var); }
+
+    stack = malloc((size * 32));
+    for (int i = 0; i != size; i++) {
         stack[i] = malloc(((1024 + 8) + 248));
+        if (stack[i] == NULL) { printf("OUT OF MEMORY\n"); CritExit(); }
     }
     return;
 }
 
 void stackDealloc() {
-    for (int i = 0; i <= 49; i++) {
+    unsigned short size;
+    const char* VarName = "STACK_SIZE";
+    const char* Var = getenv(VarName);
+    if (Var == NULL) { size = 100; }
+    else { size = atoi(Var); }
+
+    for (int i = 1; i != size; i++) {
+
         free(stack[i]);
+        
     }
     free(stack);
 }

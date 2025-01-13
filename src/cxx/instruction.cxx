@@ -2,9 +2,12 @@
 #include "../header/object.h"
 #include "header/data.hxx"
 #include "header/sys.hxx"
-#include "src/header/object.h"
 #include <cstdio>
 #include <cstdlib>
+#include "header/instruction.hxx"
+
+
+
 
 namespace inst {
 class risc {
@@ -90,6 +93,8 @@ public:
     if (buffword[1] == NULL) {  sys::MsgError("instruction.cxx, dprintstk", "Invalid Arguments"); }
     short index = atoi(buffword[1]);
     sstack* local = stack[index];
+    if (local == NULL) { sys::MsgError("Invalid Address", "STACK Address NULL"); } 
+    
     printf("String: %s, Double: %lf, Address: %p\n", local->s, local->r, local);
     printf("STACK PTR: %d\n", *sp);
     return true;
