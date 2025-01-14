@@ -8,6 +8,7 @@
 #include "../header/id.h"
 #include "header/instruction.hxx"
 #include "header/vm.hxx"
+#include <iostream>
 
 extern "C" int vmMain(OperandMetadataBasic_t* metadata) {
 
@@ -45,14 +46,16 @@ extern "C" bool vmId(OperandMetadataBasic_t* metadata) {
             return false;
 
         case GROUP_MOV:
-            case ID_MOVL:
+            switch (metadata->id) {
+                case ID_MOVL:
+                    std::cout << "Got Here ID_MOVL" << std::endl;
+                    return true;
 
-                return true;
-
-            case ID_MOVS:
-
-                return true;
-
+                case ID_MOVS:
+                    std::cout << "Got Here ID_MOVS" << std::endl;
+                    return true;
+            }
+        
         default:
             sys::MsgError("Invalid MetaData Group", "Group did not match");
             return false;
