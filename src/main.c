@@ -15,7 +15,7 @@
 #include "asm/header/crit.h"
 
 
-const char* version = "Version: 0.0.1 Alpha, Compiled on 8/1/2024";
+const char* version = "Version: 0.0.2 Alpha, Compiled on 15/1/2025";
 
 void FileReader(const char* filename, char* func);
 void CmdReader();
