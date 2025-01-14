@@ -92,6 +92,7 @@ public:
   bool dprintstk(sstack** stack, char** buffword, unsigned short* sp) {
     if (buffword[1] == NULL) {  sys::MsgError("instruction.cxx, dprintstk", "Invalid Arguments"); }
     short index = atoi(buffword[1]);
+    if (stack[index] == NULL) { sys::MsgError("Invalid Address", "STACK Address NULL"); }
     sstack* local = stack[index];
     if (local == NULL) { sys::MsgError("Invalid Address", "STACK Address NULL"); } 
     

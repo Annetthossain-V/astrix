@@ -4,6 +4,8 @@
 .section .text
 .global strlen_ASM
 .global kmalloc
+.global ksleep
+
 strlen_ASM:
     xor eax, eax
     cmp BYTE PTR [rdi], 0
@@ -25,6 +27,16 @@ kmalloc:
     mul rdi
     mov rdi, rax
     call malloc
+    ret
+    nop
+
+ksleep:
+    mov rax, 1000
+    mul rdi
+    mov rdi, rax
+    xor rax, rax
+    call usleep
+    xor rax, rax
     ret
     nop
 
