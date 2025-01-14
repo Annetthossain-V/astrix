@@ -162,6 +162,10 @@ void CmdReader() {
             data_deinit();
             Exit_Astrix();
         }
+        if (strcmp(buffer, "clear()") == 0) {
+           system("clear")
+           continue;
+        }
         unsigned short count = StringHyperV(buffer);
         OperandMetadataBasic_t *metadata = (OperandMetadataBasic_t*) malloc(52);
         *metadata = ParserBasic();
