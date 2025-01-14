@@ -11,12 +11,12 @@
 
 OperandMetadataBasic_t ParserBasic() {
     OperandMetadataBasic_t metadata;
-    char** BufferWord = Get_buffer_word();
+    extern char** buffer_word;
 
     int result;
     bool match;
 
-    result = strcmp(BufferWord[0], "debug");
+    result = strcmp(buffer_word[0], "debug");
     if (result == 0) {
         metadata.FirstRegister = null;
         metadata.SecondRegister = null;
@@ -25,9 +25,9 @@ OperandMetadataBasic_t ParserBasic() {
 
         match = true;
     }
-    result = strcmp(BufferWord[0], "dprintreg");
+    result = strcmp(buffer_word[0], "dprintreg");
     if (result == 0) {
-        Register_t first = StrToReg(BufferWord[1]);
+        Register_t first = StrToReg(buffer_word[1]);
         metadata.FirstRegister = first;
         metadata.SecondRegister = null;
         metadata.id = ID_DPRINTREG;
@@ -36,7 +36,7 @@ OperandMetadataBasic_t ParserBasic() {
         match = true;
     }
 
-    ParserP(&metadata, &match, BufferWord);
+    ParserP(&metadata, &match, buffer_word);
 
     if (match == false) {
         metadata.FirstRegister = null;

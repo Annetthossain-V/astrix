@@ -10,7 +10,7 @@ void Exit_Astrix() {
 
 void Msg_Box_Error(char* msg, char* title) {
   printf("%s: %s\n", title, msg);
-  bool *cli = GetCli();
+  extern bool* cli;
   if (*cli == true) { return; }
 
   data_deinit();

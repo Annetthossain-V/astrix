@@ -68,16 +68,15 @@ config_t* _config(short argc, char** argv) {
 
 
 int main(int argc, char** argv) {
-    config_t *args = GetArgs();
-    args = _config(argc, argv);
+    config_t *args = _config(argc, argv);
     
     data_init();
-    bool *cli = GetCli();
+    extern bool *cli;
 
-    char* funcName = GetFuncName();
-    strcpy(funcName, "main:");
+    extern char* functionName;
+    strcpy(functionName, "main:");
 
-    bool* jmp = GetJmp();
+    extern bool* jmp;
     *jmp = true;
 
     if (args->FoundFileName == true) { args->cli = false; *cli = false;; }
@@ -88,7 +87,7 @@ int main(int argc, char** argv) {
         while (true) {
             if (*jmp == true) {
                 *jmp = false;
-                FileReader(filename, funcName);
+                FileReader(filename, functionName);
             } else if (*jmp == false) {
                 break;
             }
@@ -104,9 +103,9 @@ int main(int argc, char** argv) {
 }
 
 void FileReader(const char* filename, char* func) {
-    char* buffer = Get_buffer();
+    extern char* buffer;
     bool fndFnc = false;
-    bool* jmp = GetJmp();
+    extern bool* jmp;
 
     FILE *file;
     file = fopen(filename, "r");
@@ -117,9 +116,9 @@ void FileReader(const char* filename, char* func) {
         if (newline) { *newline = '\0'; }
 
         unsigned short count = StringHyperV(buffer);
-        char **buff_word = Get_buffer_word();
+        extern char** buffer_word;
 
-        int matchName = strcmp(buff_word[0], func);
+        int matchName = strcmp(buffer_word[0], func);
         if (fndFnc == false) {
             if (matchName == 0) {
                 fndFnc = true;
@@ -129,7 +128,7 @@ void FileReader(const char* filename, char* func) {
             }
         } else if (fndFnc == true) {
             char* fnc = ":";
-            if (strstr(buff_word[0], fnc) != NULL) {
+            if (strstr(buffer_word[0], fnc) != NULL) {
                 break;
             }
         }
@@ -152,8 +151,8 @@ void FileReader(const char* filename, char* func) {
 }
 
 void CmdReader() {
-    char* buffer = Get_buffer();
-    char** buffer_word = Get_buffer_word();
+    extern char* buffer;
+    extern char** buffer_word;
     while (true) {
         printf("Astrix $> ");
         fgets(buffer, 1024, stdin);

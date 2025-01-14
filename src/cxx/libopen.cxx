@@ -15,18 +15,18 @@
 #include "../header/object.h"
 
 void libmain() {
-    double* r0 = get_r0();
-    double* r1 = get_r1();
-    char* s0 = get_s0();
-    char* s1 = get_s1();
-    sstack** stack = getstack();
-    unsigned short* sp = GetSp();
-    sstack* stf1 = GetstRegister(STF1);
-    sstack* stf2 = GetstRegister(STF2);
-    sstack* stf3 = GetstRegister(STF3);
+    // double* r0 = get_r0();
+    // double* r1 = get_r1();
+    // char* s0 = get_s0();
+    // char* s1 = get_s1();
+    // sstack** stack = getstack();
+    // unsigned short* sp = GetSp();
+    // sstack* stf1 = GetstRegister(STF1);
+    // sstack* stf2 = GetstRegister(STF2);
+    // sstack* stf3 = GetstRegister(STF3);
 
-    std::string dllname = s0;
-    std::string funcname = s1;
+    // std::string dllname = s0;
+    // std::string funcname = s1;
 
 
 }

@@ -14,7 +14,7 @@ unsigned short StringHyperV(char* buffer) {
     char* delim = " ";
     int count = 0;
     
-    char** buffer_word = Get_buffer_word();
+    extern char** buffer_word;
 
     token = strtok(buffer, delim);
 

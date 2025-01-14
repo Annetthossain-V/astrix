@@ -7,7 +7,15 @@
 #include "header/instruction.hxx"
 
 
-
+extern sstack* st1;
+extern sstack* st2;
+extern sstack* st3;
+extern sstack* st4;
+extern sstack* st5;
+extern sstack* st6;
+extern sstack* stf1;
+extern sstack* stf2;
+extern sstack* stf3;
 
 namespace inst {
 class risc {
@@ -20,15 +28,7 @@ public:
 class cisc {
 public:
   bool dprintreg(OperandMetadataBasic_t* metadata, double* r0, double* r1, char* s0, char* s1) {
-    sstack* sst1 = GetstRegister(ST1);
-    sstack* sst2 = GetstRegister(ST2);
-    sstack* sst3 = GetstRegister(ST3);
-    sstack* sst4 = GetstRegister(ST4);
-    sstack* sst5 = GetstRegister(ST5);
-    sstack* sst6 = GetstRegister(ST6);
-    sstack* sstf1 = GetstRegister(STF1);
-    sstack* sstf2 = GetstRegister(STF2);
-    sstack* sstf3 = GetstRegister(STF3);
+
 
     switch (metadata->FirstRegister) {
       case R0:
@@ -48,39 +48,39 @@ public:
         return true;
 
       case SST1:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst1->s, sst1->r, sst1);
+        printf("Char: %s, Double: %lf, Address: %p\n", st1->s, st1->r, st1);
         return true;
 
       case SST2:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst2->s, sst2->r, sst2);
+        printf("Char: %s, Double: %lf, Address: %p\n", st2->s, st2->r, st2);
         return true;
 
       case SST3:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst3->s, sst3->r, sst3);
+        printf("Char: %s, Double: %lf, Address: %p\n", st3->s, st3->r, st3);
         return true;
 
       case SST4:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst4->s, sst4->r, sst4);
+        printf("Char: %s, Double: %lf, Address: %p\n", st4->s, st4->r, st4);
         return true;
       
       case SST5:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst5->s, sst5->r, sst5);
+        printf("Char: %s, Double: %lf, Address: %p\n", st5->s, st5->r, st5);
         return true;
 
       case SST6:
-        printf("Char: %s, Double: %lf, Address: %p\n", sst6->s, sst6->r, sst6);
+        printf("Char: %s, Double: %lf, Address: %p\n", st6->s, st6->r, st6);
         return true;
 
       case SSTF1:
-        printf("Char: %s, Double: %lf, Address: %p\n", sstf1->s, sstf1->r, sstf1);
+        printf("Char: %s, Double: %lf, Address: %p\n", stf1->s, stf1->r, stf1);
         return true;
 
       case SSTF2:
-        printf("Char: %s, Double: %lf, Address: %p\n", sstf2->s, sstf2->r, sstf2);
+        printf("Char: %s, Double: %lf, Address: %p\n", stf2->s, stf2->r, stf2);
         return true;
 
       case SSTF3:
-        printf("Char: %s, Double: %lf, Address: %p\n", sstf3->s, sstf3->r, sstf3);
+        printf("Char: %s, Double: %lf, Address: %p\n", stf3->s, stf3->r, stf3);
         return true;
 
       default:
@@ -109,10 +109,10 @@ public:
 
 // C APIs 
 extern "C" void dprintregAPI(OperandMetadataBasic_t* metadata) {
-    double* r0 = get_r0();
-    double* r1 = get_r1();
-    char* s0 = get_s0();
-    char* s1 = get_s1();
+    extern double* r0;
+    extern double* r1;
+    extern char* s0;
+    extern char* s1;
     
     inst::cisc CISC;
 
@@ -122,11 +122,11 @@ extern "C" void dprintregAPI(OperandMetadataBasic_t* metadata) {
 }
 
 extern "C" void dprintstk() {
-  char** Buffword = Get_buffer_word();
-  sstack** stk = getstack();
-  unsigned short* sp = GetSp();
+  extern char** buffer_word;
+  extern sstack** stack;
+  extern unsigned short* sp;
   inst::cisc CISC;
-  CISC.dprintstk(stk, Buffword, sp);
+  CISC.dprintstk(stack, buffer_word, sp);
 
   return;
 }

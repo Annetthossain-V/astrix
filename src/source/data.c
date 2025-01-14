@@ -6,47 +6,47 @@
 #include <stdbool.h>
 #include "../header/object.h"
 
-extern void CritExit();
+void CritExit();
 
 
-static char* buffer;
-static char** buffer_word;
+char* buffer;
+char** buffer_word;
 
 // switch args to local variable
-static config_t* args;
+// static config_t* args;
 
-static bool *cli;
-static bool *admin;
+bool *cli;
+bool *admin;
 
-static bool *sstring;
+bool *sstring;
 
 // Registers
 // add more in the future
-static double* r0;
-static double* r1;
+double* r0;
+double* r1;
 
-static char* s0;
-static char* s1;
+char* s0;
+char* s1;
 
 // storage registers
-static sstack* st1;
-static sstack* st2;
-static sstack* st3;
-static sstack* st4;
-static sstack* st5;
-static sstack* st6;
+sstack* st1;
+sstack* st2;
+sstack* st3;
+sstack* st4;
+sstack* st5;
+sstack* st6;
 
-static sstack* stf1;
-static sstack* stf2;
-static sstack* stf3;
-
-
-static sstack** stack;
-static unsigned short* sp;
+sstack* stf1;
+sstack* stf2;
+sstack* stf3;
 
 
-static char* functionName;
-static bool* jmp;
+sstack** stack;
+unsigned short* sp;
+
+
+char* functionName;
+bool* jmp;
 
 
 
@@ -222,85 +222,4 @@ void data_deinit() {
     stRegDealloc();
 
     return;
-}
-
-char* get_s1() {
-    return s1;
-}
-
-char* get_s0() {
-    return s0;
-}
-
-double* get_r1() {
-    return r1;
-}
-
-double* get_r0() {
-    return r0;
-}
-
-char* Get_buffer() {
-    return buffer;
-}
-
-char** Get_buffer_word() {
-    return buffer_word;
-}
-
-char* GetFuncName() {
-    return functionName;
-}
-
-bool* GetJmp() {
-    return jmp;
-}
-
-sstack** getstack() {
-    return stack;
-}
-
-config_t* GetArgs() {
-    return args;
-}
-
-bool* GetCli() {
-    return cli;
-}
-
-unsigned short* GetSp() {
-    return sp;
-}
-
-bool* getAdmin() {
-    return admin;
-}
-
-sstack* GetstRegister(StorageRegister_t Register) {
-    switch (Register) {
-        case ST1:
-            return st1;
-        case ST2:
-            return st2;
-        case ST3:
-            return st3;
-        case ST4:
-            return st4;
-        case ST5:
-            return st5;
-        case ST6:
-            return st6;
-        case STF1:
-            return stf1;
-        case STF2:
-            return stf2;
-        case STF3:
-            return stf3;
-        default:
-            return NULL;
-    }
-}
-
-bool* getsstring() {
-    return sstring;
 }
