@@ -163,7 +163,7 @@ void CmdReader() {
             Exit_Astrix();
         }
         if (strcmp(buffer, "clear()") == 0) {
-           system("clear")
+           system("clear");
            continue;
         }
         unsigned short count = StringHyperV(buffer);
