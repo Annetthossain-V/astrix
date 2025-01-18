@@ -1,6 +1,7 @@
 .intel_syntax noprefix
 
 .global CritExit
+.global SigCheck
 
 .data
 msg: .string "Critical Error, Exiting"
@@ -16,5 +17,7 @@ CritExit:
         nop
         nop
         nop
+
+SigCheck
 
 .section .note.GNU-stack,"",@progbits
