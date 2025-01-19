@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 
 .global CritExit
-
+.global Data_Initialize
 
 .data
 msg: .string "Critical Error, Exiting"
@@ -18,6 +18,12 @@ CritExit:
         nop
         nop
 
+
+Data_Initialize:
+        nop
+        nop
+
+        call CritExit
 
 
 .section .note.GNU-stack,"",@progbits

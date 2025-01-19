@@ -18,7 +18,6 @@ AXXFILE := $(wildcard ../src/asm/*.S)
 OBJFILE := $(patsubst ../src/source/%.c, %.o, $(wildcard ../src/source/*.c))
 OBJFILE_ASM := $(patsubst ../src/asm/%.S, %.o, $(wildcard ../src/asm/*.S))
 OBJFILE_CXX := $(patsubst ../src/cxx/%.cxx, %.o, $(wildcard ../src/cxx/*.cxx))
-OBJFILE_S := crit.o
 
 
 MAINC = ../src/main.c
@@ -29,20 +28,18 @@ OUTFILE = astrix
 
 build:
 	$(CC) $(CFLAGS_D) $(SOURCE) $(MAINC)
-	$(ASM) ../src/asm/crit.s -o crit.o
 	$(CXX)  $(AXXFILE) -c -O3
 	$(CXX) $(SOURCE_CXX) $(CXXFLAGS_D)
-	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) $(OBJFILE_CXX) main.o -o $(OUTFILE) 
-	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) $(OBJFILE_CXX) main.o $(OBJ_DIR)
+	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o -o $(OUTFILE) 
+	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o $(OBJ_DIR)
 
 
 release:
 	$(CC) $(CFLAGS_R) $(MAINC) $(SOURCE)
-	$(ASM) ../src/asm/crit.s -o crit.o
 	$(CXX) $(AXXFILE) -c -O3
 	$(CXX) $(SOURCE_CXX) $(CXXFLAGS_R)
-	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) $(OBJFILE_CXX) main.o -o $(OUTFILE)
-	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_S) $(OBJFILE_CXX) main.o $(OBJ_DIR)
+	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o -o $(OUTFILE)
+	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o $(OBJ_DIR)
 	strip $(OUTFILE)
 
 clean:
