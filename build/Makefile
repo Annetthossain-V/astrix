@@ -24,23 +24,29 @@ MAINC = ../src/main.c
 
 OBJ_DIR = bin/
 
-OUTFILE = astrix
+OUTFILE = x86-linux-astrix
 
-build:
+build: clean
 	$(CC) $(CFLAGS_D) $(SOURCE) $(MAINC)
 	$(CXX)  $(AXXFILE) -c -O3
 	$(CXX) $(SOURCE_CXX) $(CXXFLAGS_D)
 	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o -o $(OUTFILE) 
 	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o $(OBJ_DIR)
+	ln -s $(OUTFILE) astrix
+	ln -s $(OUTFILE) asm++
 
-
-release:
+release: clean
 	$(CC) $(CFLAGS_R) $(MAINC) $(SOURCE)
 	$(CXX) $(AXXFILE) -c -O3
 	$(CXX) $(SOURCE_CXX) $(CXXFLAGS_R)
 	$(LD) $(LDFLAGS) $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o -o $(OUTFILE)
 	mv $(OBJFILE) $(OBJFILE_ASM) $(OBJFILE_CXX) main.o $(OBJ_DIR)
 	strip $(OUTFILE)
-
+	ln -s $(OUTFILE) astrix
+	ln -s $(OUTFILE) asm++
 clean:
-	rm $(OBJ_DIR)*
+	rm -f $(OBJ_DIR)*
+	rm -f $(OUTFILE)
+	rm -f astrix
+	rm -f asm++
+	
