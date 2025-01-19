@@ -18,6 +18,6 @@ CritExit:
         nop
         nop
 
-SigCheck
+SigCheck:
 
 .section .note.GNU-stack,"",@progbits
