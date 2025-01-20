@@ -1,0 +1,2 @@
+CompileFlags:
+  add: [ -std=c23, I./ ]

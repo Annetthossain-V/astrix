@@ -62,7 +62,11 @@ RegisterMix_t RegsiterMixInfo(Register_t First, Register_t Second) {
       }
     }
 
-    
+  else if (First == S0) {
+    switch (Second) {
+      
+    }
+  }
 
 
 

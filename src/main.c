@@ -18,7 +18,7 @@
 const char* version = "Version: 0.0.2 Alpha, Compiled on 15/1/2025";
 
 
-extern void Data_Initialize();
+// extern void Data_Initialize();
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
