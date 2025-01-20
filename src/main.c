@@ -17,6 +17,8 @@
 
 const char* version = "Version: 0.0.2 Alpha, Compiled on 15/1/2025";
 
+
+extern void Data_Initialize();
 void FileReader(const char* filename, char* func);
 void CmdReader();
 
@@ -69,8 +71,8 @@ config_t* _config(short argc, char** argv) {
 
 int main(int argc, char** argv) {
     config_t *args = _config(argc, argv);
-    
     data_init();
+    Data_Initialize();
     extern bool *cli;
 
     extern char* functionName;
