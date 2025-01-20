@@ -73,6 +73,8 @@ int main(int argc, char** argv) {
     config_t *args = _config(argc, argv);
     data_init();
     Data_Initialize();
+    extern unsigned short* sp;
+    *sp = 0;
     extern bool *cli;
 
     extern char* functionName;

@@ -12,6 +12,7 @@ typedef enum RegisterMix {
   R0_ST4,
   R0_ST5,
   R0_ST6,
+  R0_VAL,
   // R0 ENDS
   R1_R0,
   R1_STF1,
@@ -23,6 +24,7 @@ typedef enum RegisterMix {
   R1_ST4,
   R1_ST5,
   R1_ST6,
+  R1_VAL,
   // STRINGS
   S0_S1,
   S0_STF1,
@@ -34,6 +36,7 @@ typedef enum RegisterMix {
   S0_ST4,
   S0_ST5,
   S0_ST6,
+  S0_VAL,
   // S0 ENDS
   S1_S0,
   S1_STF1,
@@ -45,6 +48,7 @@ typedef enum RegisterMix {
   S1_ST4,
   S1_ST5,
   S1_ST6,
+  S1_VAL,
   // S1 ENDS
   // STRING ENDS
 
@@ -60,6 +64,7 @@ typedef enum RegisterMix {
   STF1_ST4,
   STF1_ST5,
   STF1_ST6,
+  STF1_VAL,
   // STF1 ENDS
   STF2_S1,
   STF2_R1,
@@ -73,6 +78,7 @@ typedef enum RegisterMix {
   STF2_ST4,
   STF2_ST5,
   STF2_ST6,
+  STF2_VAL,
   // STF2 ENDS
   STF3_S1,
   STF3_R1,
@@ -86,6 +92,7 @@ typedef enum RegisterMix {
   STF3_ST4,
   STF3_ST5,
   STF3_ST6,
+  STF3_VAL,
   // STF3 ENDS, ST BEGINS
   ST1_S0,
   ST1_S1,
@@ -99,6 +106,7 @@ typedef enum RegisterMix {
   ST1_ST4,
   ST1_ST5,
   ST1_ST6,
+  ST1_VAL,
   // ST1 ENDS
   ST2_S0,
   ST2_S1,
@@ -112,6 +120,7 @@ typedef enum RegisterMix {
   ST2_ST4,
   ST2_ST5,
   ST2_ST6,
+  ST2_VAL,
   // ST2 ENDS
   
   ST3_S0,
@@ -126,6 +135,7 @@ typedef enum RegisterMix {
   ST3_ST4,
   ST3_ST5,
   ST3_ST6,
+  ST3_VAL,
     // ST3 ENDS
     ST4_S0,
     ST4_S1,
@@ -139,6 +149,7 @@ typedef enum RegisterMix {
     ST4_ST1,
     ST4_ST5,
     ST4_ST6,
+    ST4_VAL,
     // ST4 ENDS
     ST5_S0,
     ST5_S1,
@@ -152,6 +163,7 @@ typedef enum RegisterMix {
     ST5_ST4,
     ST5_ST1,
     ST5_ST6,
+    ST5_VAL,
     // ST5 ENDS
     ST6_S0,
     ST6_S1,
@@ -165,6 +177,9 @@ typedef enum RegisterMix {
     ST6_ST4,
     ST6_ST5,
     ST6_ST1,
+    ST6_VAL,
+
+    
     nil_nil
 
 } RegisterMix_t;
