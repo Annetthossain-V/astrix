@@ -2,7 +2,7 @@
 
 .global CritExit
 .global Data_Initialize
-
+.global check_admin
 .text
 CritExit:
         lea rdi, msg
@@ -70,6 +70,11 @@ Data_Initialize:
 
 
 
+check_admin:
+        push rbx
+        mov bx, BYTE PTR admin[rip]
+        // get env stuff
+        ret  
 
 
 .data

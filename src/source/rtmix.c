@@ -62,9 +62,32 @@ RegisterMix_t RegsiterMixInfo(Register_t First, Register_t Second) {
       }
     }
 
-  else if (First == S0) {
-    switch (Second) {
-      
+    else if (First == S0) {
+      switch (Second) {
+        case S1:
+          return S0_S1;
+        case SSTF1:
+          return S0_STF1;
+        case SSTF2:
+          return S0_STF2;
+        case SSTF3:
+          return S0_STF3;
+        case SST1:
+           return S0_ST1;
+        case SST2:
+          return S0_ST2;
+        case SST3:
+          return S0_ST3;
+        case SST4:
+          return S0_ST4;
+        case SST5:
+          return S0_ST5;
+        case SST6:
+          return S0_ST6;
+        case null:
+          return S0_VAL;
+        default:
+          return S0_VAL;
     }
   }
 

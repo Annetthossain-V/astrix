@@ -5,6 +5,7 @@
 .global strlen_ASM
 .global kmalloc
 .global ksleep
+.global kwrite
 
 strlen_ASM:
     xor eax, eax
@@ -39,5 +40,20 @@ ksleep:
     xor rax, rax
     ret
     nop
+
+
+
+kwrite:
+    push rbx
+    mov rbx, rdi
+    call strlen_ASM
+    mov rdx, rax
+    mov rcx, rbx
+    mov rax, 1
+    mov rdi, 1
+    syscall
+    ret
+    ret
+
 
 .section .note.GNU-stack, "",@progbits
